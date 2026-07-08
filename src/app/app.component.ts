@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 /**
  * AppComponent — the root component of the app.
@@ -33,6 +33,7 @@ export class AppComponent {
    * Tracks whether the UI is in light mode (true) or dark mode (false).
    * The template uses this to conditionally apply the 'light' CSS class.
    */
+  @HostBinding('class.light')
   isLightMode: boolean = false;
 
   /**
@@ -132,8 +133,7 @@ export class AppComponent {
    * will update automatically once you toggle the property.
    */
   toggleTheme(): void {
-    // TODO: implement me!
-    // Step 1 – flip this.isLightMode to its opposite value (use the ! operator)
+    this.isLightMode = !this.isLightMode;
   }
 
   /**
@@ -159,10 +159,8 @@ export class AppComponent {
    * Hint: divide the current display value by 100, then update this.display.
    */
   pressPercent(): void {
-    // TODO: implement me!
-    // Step 1 – convert this.display to a number
-    // Step 2 – divide by 100
-    // Step 3 – assign the result back to this.display (as a string)
+    const value = parseFloat(this.display);
+    this.display = (value / 100).toString();
   }
 
 
